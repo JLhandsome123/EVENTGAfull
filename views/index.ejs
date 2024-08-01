@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>MyEve</title>
+    <style>
+        body {
+            background-image: url('https://www.tripsavvy.com/thmb/VbuNfLcdgII-GlZYtPDMZoymPBw=/4500x3001/filters:fill(auto,1)/singapore-travel-584f789f5f9b58a8cdf97dda.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <div class="container mt-3">
+        <h2 style="color: white;">Events</h2>
+        <div class="row">
+            <% for (let i = 0; i < events.length; i++) { %>
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <img src="images/<%= events[i].image %>" width="100%">
+                            <br>
+                            <a href="/events/<%= events[i].eventId %>"><%= events[i].name %></a>
+                        </h4>
+                        <p class="card-text"><%= events[i].details %></p>
+                        <a href="/register" class="btn btn-primary">Register Now!</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

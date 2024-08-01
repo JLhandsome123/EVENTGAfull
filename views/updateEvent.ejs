@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>My Eve</title>
+</head>
+<body style="background-color: aqua;">
+    <%- include ('partials/navbar.ejs') %>
+    <div class="container mt-3">
+        <h2>Update Event</h2>
+
+        <form action="/events/<%= event.eventId %>/update" method="POST" enctype="multipart/form-data">
+            <div class="mb-3 mt-3">
+                <label for="name">Event Name:</label>
+                <input type="text" class="form-control" id="EventName" value="<%= event.name %>" placeholder="Enter Event Name" name="name">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="details">Detail:</label>
+                <input type="text" class="form-control" id="details" value="<%= event.details %>" placeholder="Enter Detail" name="details">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" value="<%= event.date %>" placeholder="Enter Date" name="date">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="start_time">Start Time:</label>
+                <input type="time" class="form-control" id="start_time" value="<%= event.start_time %>" placeholder="Enter Start Time" name="start_time">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="end_time">End Time:</label>
+                <input type="time" class="form-control" id="end_time" value="<%= event.end_time %>" placeholder="Enter End Time" name="end_time">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="venue">Venue:</label>
+                <input type="text" class="form-control" id="venue" value="<%= event.venue %>" placeholder="Enter Venue" name="venue">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" id="price" value="<%= event.price %>" placeholder="Enter Price" name="price">
+            </div>
+            
+            <label for="image">Current Image:</label><br>
+            <input type="text" name="currentImage" value = <%= event.image %> disabled> <br>
+            <img src="/images/<%= event.image %>" width="100%"><br><br>
+
+            New Image:<br> <input type="file" id="image" name="image" accept="image/*" value=<%= event.image %>
+            ><br><br>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
